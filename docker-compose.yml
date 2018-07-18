@@ -6,7 +6,7 @@ services:
       context: ./configs
       dockerfile: nginx.dockerfile
     ports:
-      - 80:80
+      - 81:80
     links:
       - php
       - mysql
@@ -27,7 +27,23 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: test
-      MYSQL_PASSWORD: test
+      MYSQL_USER: anton
+      MYSQL_PASSWORD: anton
     volumes:
       - ./db:/var/lib/mysql
+
+  vue:
+    build:
+      context: ./configs
+      dockerfile: vue.dockerfile
+    ports:
+      - 80:80
+    working_dir: /usr/src/app
+    environment:
+      - NODE_ENV=development
+      - PORT=80
+      - HOST=0.0.0.0
+    volumes:
+      - ./www/vue:/usr/src/app
+
+

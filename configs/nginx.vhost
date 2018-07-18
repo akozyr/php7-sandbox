@@ -1,7 +1,7 @@
 server {
   listen 80;
   index index.html index.php;
-  root /var/www;
+  root /var/www/api/public;
 
   location / {
     try_files $uri $uri/ /index.php$is_args$args;
