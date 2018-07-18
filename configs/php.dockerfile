@@ -8,6 +8,7 @@ RUN apt-get update && \
         libpng-dev
 
 RUN docker-php-ext-install pdo_mysql && \
+    docker-php-ext-install mysqli && \
     docker-php-ext-install gd
 
 RUN pecl install xdebug
